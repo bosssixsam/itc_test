@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+}
+
+html {
+  font-size: 10px;
+}
+
+a {
+  curser: pointer;
+}
+p,
+a,
+span,
+ul,
+li,
+div {
+  @apply text-[1.2rem];
+}
