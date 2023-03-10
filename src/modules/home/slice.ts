@@ -19,6 +19,21 @@ export const getList = createAsyncThunk("home/getList", async (_, { rejectWithVa
   }
 });
 
+export const getTypes = createAsyncThunk("home/getTypes", async (_, { rejectWithValue, dispatch }) => {
+  try {
+    const result = await HOMEAPI.getTypes("/type");
+
+    if (result) {
+      return result;
+    }
+  } catch (error: any) {
+    if (!error.response) {
+      throw error;
+    }
+    // return rejectWithValue(error.response.errors[0]);
+  }
+});
+
 const homeSlice = createSlice({
   name: "home",
   initialState: SLICE_INIT as ISLICE_INIT,
@@ -52,6 +67,20 @@ const homeSlice = createSlice({
         state.list = SLICE_INIT.list;
         state.next = SLICE_INIT.next;
         state.previous = SLICE_INIT.previous;
+        // state.error = null;
+      })
+
+      .addCase(getTypes.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(getTypes.fulfilled, (state, action: PayloadAction<any>) => {
+        state.loading = false;
+        state.type = action.payload.results;
+        state.error = null;
+      })
+      .addCase(getTypes.rejected, (state) => {
+        state.loading = false;
+        state.type = [];
         // state.error = null;
       });
     // .addCase(getBanner.fulfilled, (state, action: PayloadAction<Array<NHOME_MODEL.IBanner>>) => {

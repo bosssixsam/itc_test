@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 
+import { useAppDispatch, useAppSelector } from "@/hooks";
+
+import { FilterItemView, getTypes, selecthome } from "@/modules/home";
 import axiosClient from "@/services/axiosClients";
 
-import { ItemView } from "@/modules/home";
-
-export interface IItem {
+export interface FilterItemContainer {
   name: string;
   url: string;
 }
 
-const ItemContainer = ({ name, url }: IItem) => {
+const FilterItemContainer = ({ name, url }: FilterItemContainer) => {
   const [loading, setLoading] = useState(false);
   const [img, setImg] = useState("");
 
@@ -30,8 +31,7 @@ const ItemContainer = ({ name, url }: IItem) => {
       return "";
     }
   };
-
-  return <ItemView className="max-w-[80px]" loading={loading} name={name} img={img} />;
+  return <FilterItemView loading={loading} name={name} />;
 };
 
-export default ItemContainer;
+export default FilterItemContainer;

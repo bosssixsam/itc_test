@@ -4,5 +4,6 @@ export const SLICE_INIT = {
   next: "",
   previous: null,
   list: [],
+  type: [],
   error: null,
 };

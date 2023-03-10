@@ -4,5 +4,6 @@ export interface ISLICE_INIT {
   next: string | null;
   previous: null | string;
   list: Array<any>;
+  type: Array<any>;
   error: null;
 }

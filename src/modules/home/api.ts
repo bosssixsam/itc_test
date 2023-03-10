@@ -17,4 +17,16 @@ export const HOMEAPI = {
       },
     });
   },
+  getTypes(url: string, param?: any): Promise<any> {
+    const params = param
+      ? {
+          ...param,
+          limit: 48,
+        }
+      : {
+          limit: 48,
+        };
+
+    return axiosClient.get(url);
+  },
 };
