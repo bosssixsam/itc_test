@@ -1,3 +1,4 @@
+import axios from "axios";
 import { createAsyncThunk, createSlice, isRejectedWithValue, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/apps/store";
 
@@ -9,6 +10,12 @@ export const getList = createAsyncThunk("home/getList", async (_, { rejectWithVa
     const result = await HOMEAPI.getlist("/pokemon");
 
     if (result) {
+      // for (let i = 0; i < result.results.length; i++) {
+      //   const data = await axios.get(result.results[i].url);
+
+      //   console.log("data", data);
+      // }
+
       return result;
     }
   } catch (error: any) {
@@ -24,6 +31,7 @@ export const getTypes = createAsyncThunk("home/getTypes", async (_, { rejectWith
     const result = await HOMEAPI.getTypes("/type");
 
     if (result) {
+      // console.log("fd", result);
       return result;
     }
   } catch (error: any) {

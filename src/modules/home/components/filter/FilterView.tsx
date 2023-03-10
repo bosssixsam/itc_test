@@ -5,9 +5,11 @@ import { FilterItem } from "@/modules/home";
 
 export interface IFilterView {
   types: Array<{ name: string; url: string }>;
+  fillist: Array<{ name: string; url: string }>;
+  handleFilter: (name: string, url: string) => void;
 }
 
-const FilterView = ({ types }: IFilterView) => {
+const FilterView = ({ types, fillist, handleFilter }: IFilterView) => {
   return (
     <div className="wrapper pt-[30px]">
       <Container>
@@ -16,7 +18,14 @@ const FilterView = ({ types }: IFilterView) => {
           <div className="flex flex-wrap -m-[6px]">
             {types.map((item, index) => (
               <div key={index} className="p-[6px]">
-                <FilterItem name={item.name} url={item.url} />
+                <button
+                  className={`px-2 py-2 border-red-900 border-2 rounded-md font-bold 
+                    ${fillist.find((obj) => obj.name === item.name) ? "bg-red-900 text-white" : "text-red-900"}
+                  `}
+                  onClick={() => handleFilter(item.name, item.url)}
+                >
+                  {item.name}
+                </button>
               </div>
             ))}
           </div>

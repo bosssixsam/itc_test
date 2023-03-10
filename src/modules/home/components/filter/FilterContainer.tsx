@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/hooks";
 import axiosClient from "@/services/axiosClients";
@@ -10,23 +10,15 @@ type Props = {};
 const FilterContainer = (props: Props) => {
   const dispatch = useAppDispatch();
   const { type } = useAppSelector(selecthome);
+  const [filterList, setFIlterList] = useState([]);
 
-  useEffect(() => {
-    dispatch(getTypes());
-  }, []);
+  const handleFilter = (url: string) => {};
 
-  return <FilterView types={type} />;
+  return (
+    <>
+      <h2>hello</h2>
+    </>
+  );
 };
 
 export default FilterContainer;
-
-const handleAPI = async (url: string) => {
-  try {
-    const result: any = await axiosClient.get(url);
-    if (result) {
-      return result.pokemon;
-    }
-  } catch (error) {
-    return null;
-  }
-};

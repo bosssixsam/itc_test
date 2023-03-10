@@ -30,11 +30,20 @@ export const usePaginationHooks = (pagesize: number, list: Array<any>) => {
       });
     }
   };
+
+  const resetPage = () => {
+    setPage(1);
+    setParams({
+      ...params,
+      page: `1`,
+    });
+  };
   return {
     viewdata,
     totalPages,
     page,
     handleNext,
     handlePre,
+    resetPage,
   };
 };
