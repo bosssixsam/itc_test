@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 
 import { useAppDispatch, useAppSelector } from "@/hooks";
-import axiosClient from "@/services/axiosClients";
 
-import { FilterView, getTypes, selecthome } from "@/modules/home";
+import { selecthome } from "@/modules/home";
 
 type Props = {};
 

@@ -1,21 +1,14 @@
-import axios from "axios";
-import { createAsyncThunk, createSlice, isRejectedWithValue, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "@/apps/store";
 
 import { SLICE_INIT, HOMEAPI } from "@/modules/home";
-import { ISLICE_INIT, IGET_LIST } from "@/modules/home";
+import { ISLICE_INIT } from "@/modules/home";
 
 export const getList = createAsyncThunk("home/getList", async (_, { rejectWithValue, dispatch }) => {
   try {
     const result = await HOMEAPI.getlist("/pokemon");
 
     if (result) {
-      // for (let i = 0; i < result.results.length; i++) {
-      //   const data = await axios.get(result.results[i].url);
-
-      //   console.log("data", data);
-      // }
-
       return result;
     }
   } catch (error: any) {
@@ -31,7 +24,6 @@ export const getTypes = createAsyncThunk("home/getTypes", async (_, { rejectWith
     const result = await HOMEAPI.getTypes("/type");
 
     if (result) {
-      // console.log("fd", result);
       return result;
     }
   } catch (error: any) {
@@ -91,18 +83,6 @@ const homeSlice = createSlice({
         state.type = [];
         // state.error = null;
       });
-    // .addCase(getBanner.fulfilled, (state, action: PayloadAction<Array<NHOME_MODEL.IBanner>>) => {
-    //   state.loading = false;
-    //   state.list = action.payload;
-    //   state.error = null;
-    // })
-    // .addCase(getBanner.rejected, (state, action: PayloadAction<any>) => {
-    //   // Cookies.remove("br_tk");
-
-    //   state.loading = false;
-    //   state.list = [];
-    //   state.error = action.payload;
-    // });
   },
 });
 

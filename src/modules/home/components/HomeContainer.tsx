@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 
 import { useAppDispatch, useAppSelector, usePaginationHooks } from "@/hooks";
 
@@ -7,8 +7,6 @@ import { Container, Pagination } from "@/components";
 import { FilterView } from "@/modules/home";
 
 import { getList, getTypes, HomeView, selecthome } from "@/modules/home";
-import axiosClient from "@/services/axiosClients";
-import axios from "axios";
 
 const HomeContainer = () => {
   const dispatch = useAppDispatch();
@@ -57,8 +55,6 @@ const HomeContainer = () => {
           },
         ]);
   };
-
-  // console.log("filter", filter);
 
   return loading ? (
     <p>Loading............</p>

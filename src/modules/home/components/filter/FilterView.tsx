@@ -1,7 +1,4 @@
-import React from "react";
-
 import { Container } from "@/components";
-import { FilterItem } from "@/modules/home";
 
 export interface IFilterView {
   types: Array<{ name: string; url: string }>;

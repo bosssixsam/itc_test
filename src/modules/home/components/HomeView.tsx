@@ -1,5 +1,3 @@
-import React from "react";
-
 import { Container } from "@/components";
 import { Item } from "@/modules/home";
 
